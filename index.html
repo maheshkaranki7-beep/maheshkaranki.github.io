@@ -1,36 +1,1987 @@
-<!-- =====================================================
-     ACADEMIC FOUNDATION
-====================================================== -->
+<!DOCTYPE html>
+<html lang="en">
 
-<section id="skills">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mahesh Karanki | Computing & Data Science</title>
+
+<meta name="description"
+content="Mahesh Karanki - Computing and Data Science student at Sai University.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+
+/* =========================================================
+   BASIC RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050511;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: #8b5cf6;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: min(1180px, 90%);
+    margin: auto;
+}
+
+
+/* =========================================================
+   COLOR VARIABLES
+========================================================= */
+
+:root {
+
+    --purple: #8b5cf6;
+    --pink: #ec4899;
+    --cyan: #06b6d4;
+    --blue: #3b82f6;
+
+    --white: #ffffff;
+    --text: #f5f5f5;
+    --muted: #9696aa;
+
+    --glass:
+        rgba(255,255,255,0.055);
+
+    --border:
+        rgba(255,255,255,0.11);
+
+}
+
+
+/* =========================================================
+   3D BACKGROUND
+========================================================= */
+
+#three-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -5;
+
+    pointer-events: none;
+
+}
+
+#three-container canvas {
+    display: block;
+}
+
+
+.background-gradient {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -4;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(139,92,246,0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(6,182,212,0.13),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 70% 80%,
+            rgba(236,72,153,0.12),
+            transparent 30%
+        );
+
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar {
+
+    position: fixed;
+
+    top: 20px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(1100px, 92%);
+
+    height: 64px;
+
+    padding: 0 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    border:
+
+        1px solid
+        rgba(255,255,255,0.10);
+
+    background:
+
+        rgba(8,8,20,0.65);
+
+    backdrop-filter: blur(22px);
+
+    border-radius: 20px;
+
+    z-index: 1000;
+
+    box-shadow:
+
+        0 15px 50px
+        rgba(0,0,0,0.25);
+
+}
+
+
+.logo {
+
+    font-family: "Space Grotesk";
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+}
+
+
+.logo span {
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--pink),
+            var(--cyan)
+        );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+}
+
+
+.nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    list-style: none;
+
+}
+
+
+.nav-links a {
+
+    font-size: 13px;
+
+    color: #aaaabc;
+
+    transition: 0.3s;
+
+}
+
+
+.nav-links a:hover {
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    padding-top: 100px;
+
+}
+
+
+.hero-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.1fr
+        0.9fr;
+
+    align-items: center;
+
+    gap: 40px;
+
+}
+
+
+.availability {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 9px 15px;
+
+    border-radius: 100px;
+
+    background:
+
+        rgba(139,92,246,0.10);
+
+    border:
+
+        1px solid
+        rgba(139,92,246,0.30);
+
+    color: #c8b5ff;
+
+    font-size: 12px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.live-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 15px #22c55e;
+
+}
+
+
+.hero h1 {
+
+    font-family: "Space Grotesk";
+
+    font-size:
+        clamp(55px, 8vw, 100px);
+
+    line-height: 0.92;
+
+    letter-spacing: -6px;
+
+    margin-bottom: 28px;
+
+}
+
+
+.gradient-text {
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff 5%,
+            #a78bfa 35%,
+            #22d3ee 65%,
+            #f472b6 90%
+        );
+
+    background-size: 300%;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation:
+        gradientAnimation 7s ease infinite;
+
+}
+
+
+@keyframes gradientAnimation {
+
+    0% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
+
+}
+
+
+.hero-description {
+
+    max-width: 610px;
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 32px;
+
+}
+
+
+.hero-description strong {
+
+    color: white;
+
+}
+
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 14px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 14px 20px;
+
+    border-radius: 13px;
+
+    font-size: 13px;
+
+    transition: 0.35s;
+
+}
+
+
+.button-primary {
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--purple),
+            var(--blue)
+        );
+
+    box-shadow:
+
+        0 10px 35px
+        rgba(99,102,241,0.25);
+
+}
+
+
+.button-primary:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+
+        0 18px 45px
+        rgba(99,102,241,0.38);
+
+}
+
+
+.button-outline {
+
+    border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+    background:
+        rgba(255,255,255,0.04);
+
+}
+
+
+.button-outline:hover {
+
+    background:
+        rgba(255,255,255,0.09);
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+/* =========================================================
+   HERO 3D ORB
+========================================================= */
+
+.hero-visual {
+
+    position: relative;
+
+    height: 500px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.orb {
+
+    width: 320px;
+
+    height: 320px;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 25%,
+            #ffffff,
+            #a78bfa 15%,
+            #7c3aed 35%,
+            #312e81 60%,
+            #09091a 80%
+        );
+
+    box-shadow:
+
+        0 0 70px
+        rgba(139,92,246,0.30),
+
+        inset -30px -30px 80px
+        rgba(0,0,0,0.6);
+
+    animation:
+        orbFloat 6s ease-in-out infinite;
+
+}
+
+
+.orb::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -35px;
+
+    border-radius: 50%;
+
+    border:
+
+        1px solid
+        rgba(6,182,212,0.40);
+
+    transform:
+        rotateX(65deg)
+        rotateZ(15deg);
+
+    box-shadow:
+
+        0 0 30px
+        rgba(6,182,212,0.15);
+
+}
+
+
+.orb::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -65px;
+
+    border-radius: 50%;
+
+    border:
+
+        1px solid
+        rgba(236,72,153,0.25);
+
+    transform:
+        rotateY(65deg)
+        rotateZ(-20deg);
+
+}
+
+
+@keyframes orbFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-20px)
+            rotate(5deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING LABELS
+========================================================= */
+
+.floating-tag {
+
+    position: absolute;
+
+    padding: 9px 13px;
+
+    border-radius: 10px;
+
+    background:
+
+        rgba(10,10,25,0.65);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,0.12);
+
+    backdrop-filter: blur(15px);
+
+    font-size: 10px;
+
+    color: #bbb;
+
+    animation:
+        floatingTag 5s ease-in-out infinite;
+
+}
+
+
+.tag-python {
+
+    top: 12%;
+
+    right: 10%;
+
+    color: #c4b5fd;
+
+}
+
+
+.tag-data {
+
+    bottom: 18%;
+
+    right: 5%;
+
+    animation-delay: 1s;
+
+    color: #67e8f9;
+
+}
+
+
+.tag-math {
+
+    bottom: 12%;
+
+    left: 8%;
+
+    animation-delay: 2s;
+
+    color: #f9a8d4;
+
+}
+
+
+@keyframes floatingTag {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-15px);
+
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section {
+
+    padding: 120px 0;
+
+}
+
+
+.section-header {
+
+    margin-bottom: 55px;
+
+}
+
+
+.section-number {
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: #85859b;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+
+}
+
+
+.section-title {
+
+    font-family: "Space Grotesk";
+
+    font-size:
+        clamp(36px,5vw,58px);
+
+    letter-spacing: -3px;
+
+}
+
+
+.section-description {
+
+    max-width: 650px;
+
+    margin-top: 15px;
+
+    color: #77778b;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+}
+
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.glass {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.07),
+            rgba(255,255,255,0.025)
+        );
+
+    border:
+
+        1px solid
+        rgba(255,255,255,0.10);
+
+    backdrop-filter:
+        blur(20px);
+
+    border-radius: 22px;
+
+    box-shadow:
+
+        0 20px 60px
+        rgba(0,0,0,0.20);
+
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        0.8fr;
+
+    gap: 20px;
+
+}
+
+
+.about-card {
+
+    padding: 38px;
+
+}
+
+
+.about-card p {
+
+    color: #9696aa;
+
+    line-height: 1.9;
+
+    font-size: 14px;
+
+}
+
+
+.about-card strong {
+
+    color: white;
+
+}
+
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 14px;
+
+}
+
+
+.stat {
+
+    padding: 25px;
+
+    min-height: 145px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.stat-number {
+
+    font-family: "Space Grotesk";
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.stat-label {
+
+    color: #77778b;
+
+    font-size: 11px;
+
+}
+
+
+.stat-purple {
+
+    box-shadow:
+        inset 0 0 60px
+        rgba(139,92,246,0.07);
+
+}
+
+
+.stat-cyan {
+
+    box-shadow:
+        inset 0 0 60px
+        rgba(6,182,212,0.07);
+
+}
+
+
+.stat-pink {
+
+    box-shadow:
+        inset 0 0 60px
+        rgba(236,72,153,0.07);
+
+}
+
+
+.stat-blue {
+
+    box-shadow:
+        inset 0 0 60px
+        rgba(59,130,246,0.07);
+
+}
+
+
+/* =========================================================
+   COURSES
+========================================================= */
+
+.course-category {
+
+    margin-bottom: 65px;
+
+}
+
+
+.category-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+
+}
+
+
+.category-index {
+
+    width: 36px;
+
+    height: 36px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 10px;
+
+    background:
+        rgba(139,92,246,0.10);
+
+    border:
+        1px solid
+        rgba(139,92,246,0.25);
+
+    color: #c4b5fd;
+
+}
+
+
+.category-title h3 {
+
+    font-family: "Space Grotesk";
+
+    font-size: 23px;
+
+}
+
+
+.course-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 15px;
+
+}
+
+
+.course-card {
+
+    padding: 26px;
+
+    min-height: 195px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .4s,
+        border-color .4s;
+
+}
+
+
+.course-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(139,92,246,0.35);
+
+}
+
+
+.course-number {
+
+    color: #55556a;
+
+    font-size: 10px;
+
+}
+
+
+.course-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 20px 0;
+
+    font-size: 19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,0.18),
+            rgba(6,182,212,0.10)
+        );
+
+}
+
+
+.course-card h4 {
+
+    font-family: "Space Grotesk";
+
+    font-size: 17px;
+
+    line-height: 1.2;
+
+    margin-bottom: 9px;
+
+}
+
+
+.course-card p {
+
+    color: #74748a;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.education-wrapper {
+
+    position: relative;
+
+    padding-left: 35px;
+
+    border-left:
+        1px solid
+        rgba(255,255,255,0.10);
+
+}
+
+
+.education-item {
+
+    position: relative;
+
+    padding-bottom: 55px;
+
+}
+
+
+.education-item:last-child {
+
+    padding-bottom: 0;
+
+}
+
+
+.education-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: -41px;
+
+    top: 2px;
+
+    width: 11px;
+
+    height: 11px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--cyan)
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(139,92,246,0.6);
+
+}
+
+
+.education-year {
+
+    color: #8b8ba0;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.education-item h3 {
+
+    font-family: "Space Grotesk";
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.education-item p {
+
+    color: #77778b;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 20px;
+
+}
+
+
+.project {
+
+    min-height: 330px;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .5s,
+        border-color .5s;
+
+}
+
+
+.project:hover {
+
+    transform:
+        translateY(-10px)
+        rotateX(2deg);
+
+    border-color:
+        rgba(255,255,255,0.22);
+
+}
+
+
+.project::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    right: -70px;
+
+    top: -70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,0.25),
+            rgba(6,182,212,0.05)
+        );
+
+    filter: blur(4px);
+
+}
+
+
+.project-number {
+
+    font-size: 10px;
+
+    color: #68687d;
+
+}
+
+
+.project h3 {
+
+    font-family: "Space Grotesk";
+
+    font-size: 28px;
+
+    margin-top: 70px;
+
+    margin-bottom: 12px;
+
+}
+
+
+.project p {
+
+    max-width: 450px;
+
+    color: #77778b;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+}
+
+
+.project-tech {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 30px;
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.project-tech span {
+
+    padding: 7px 10px;
+
+    border-radius: 50px;
+
+    font-size: 9px;
+
+    color: #aaaabc;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.08);
+
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+
+    text-align: center;
+
+    padding: 90px 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+.contact::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,0.16),
+            transparent 65%
+        );
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+
+.contact-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+.contact h2 {
+
+    font-family: "Space Grotesk";
+
+    font-size:
+        clamp(40px,6vw,75px);
+
+    line-height: 1;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.contact p {
+
+    color: #77778b;
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+
+}
+
+
+.email {
+
+    display: block;
+
+    width: fit-content;
+
+    margin: 25px auto 0;
+
+    color: #d6d6e0;
+
+    font-size: 16px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    padding-bottom: 5px;
+
+}
+
+
+/* =========================================================
+   SOCIAL LINKS
+========================================================= */
+
+.social-links {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 30px;
+
+}
+
+
+.social {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        rgba(255,255,255,0.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,0.09);
+
+    color: #aaaabc;
+
+    font-size: 11px;
+
+    transition: .3s;
+
+}
+
+
+.social:hover {
+
+    transform:
+        translateY(-5px);
+
+    color: white;
+
+    border-color:
+        rgba(139,92,246,0.5);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    padding: 30px 0;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,0.07);
+
+    color: #5e5e70;
+
+    font-size: 11px;
+
+}
+
+
+.footer-content {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+.reveal {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+
+.reveal.active {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1000px) {
+
+    .hero-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .hero-visual {
+
+        display: none;
+
+    }
+
+    .course-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+    }
+
+}
+
+
+@media(max-width:800px) {
+
+    .nav-links {
+
+        display: none;
+
+    }
+
+    .navbar {
+
+        width: 92%;
+
+    }
+
+    .about-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .projects-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    section {
+
+        padding: 90px 0;
+
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .course-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .stats-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+    .hero h1 {
+
+        letter-spacing: -4px;
+
+    }
+
+    .section-title {
+
+        letter-spacing: -2px;
+
+    }
+
+    .contact h2 {
+
+        letter-spacing: -2px;
+
+    }
+
+    .footer-content {
+
+        flex-direction: column;
+
+        gap: 10px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     3D BACKGROUND
+========================================================= -->
+
+<div id="three-container"></div>
+
+<div class="background-gradient"></div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        MAHESH<span>.</span>
+    </div>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#about">About</a>
+        </li>
+
+        <li>
+            <a href="#courses">Courses</a>
+        </li>
+
+        <li>
+            <a href="#education">Education</a>
+        </li>
+
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
 
     <div class="container">
 
-        <div class="section-label">
-            02 — Academic Foundation
+        <div class="hero-grid">
+
+
+            <div class="hero-content reveal">
+
+
+                <div class="availability">
+
+                    <span class="live-dot"></span>
+
+                    Second Year · Computing & Data Science
+
+                </div>
+
+
+                <h1>
+
+                    Mahesh
+
+                    <br>
+
+                    <span class="gradient-text">
+                        Karanki.
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    I'm a second-year student at
+                    <strong>Sai University</strong>,
+                    exploring programming, data,
+                    algorithms, mathematics and
+                    web technologies.
+
+                    I enjoy learning new concepts,
+                    solving problems and turning ideas
+                    into practical projects.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a
+                        href="#projects"
+                        class="button button-primary">
+
+                        View My Work →
+
+                    </a>
+
+
+                    <a
+                        href="mailto:maheshkaranki7@gmail.com"
+                        class="button button-outline">
+
+                        Contact Me
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- 3D VISUAL -->
+
+            <div class="hero-visual">
+
+                <div class="orb"></div>
+
+
+                <div class="floating-tag tag-python">
+                    PYTHON × C
+                </div>
+
+
+                <div class="floating-tag tag-data">
+                    DATA × ALGORITHMS
+                </div>
+
+
+                <div class="floating-tag tag-math">
+                    MATH × LOGIC
+                </div>
+
+            </div>
+
+
         </div>
 
-        <h2 class="section-title reveal">
-            What I've studied.
-        </h2>
+    </div>
 
-        <p class="section-intro reveal">
-            A multidisciplinary foundation combining programming,
-            mathematics, data, web technologies and communication.
-        </p>
+</section>
 
 
-        <!-- ================================================
-             PROGRAMMING
-        ================================================= -->
 
-        <div class="course-category reveal">
+<!-- =========================================================
+     ABOUT
+========================================================= -->
 
-            <div class="category-header">
+<section id="about">
 
-                <span class="category-number">
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <div class="section-number">
+                01 — About
+            </div>
+
+            <h2 class="section-title">
+                Who I am.
+            </h2>
+
+        </div>
+
+
+        <div class="about-grid">
+
+
+            <div class="glass about-card reveal">
+
+                <p>
+
+                    Hello, I'm
+                    <strong>Mahesh Karanki</strong>.
+
+                    <br><br>
+
+                    I am currently pursuing my
+                    second year in
+                    <strong>Computing and Data Science</strong>
+                    at <strong>Sai University</strong>.
+
+                    <br><br>
+
+                    My academic journey combines
+                    programming, data structures,
+                    algorithms, mathematics,
+                    data engineering and web
+                    technologies.
+
+                    <br><br>
+
+                    I am interested in continuously
+                    improving my technical skills,
+                    building useful projects and
+                    understanding how technology can
+                    solve real-world problems.
+
+                </p>
+
+            </div>
+
+
+            <div class="stats-grid reveal">
+
+
+                <div class="glass stat stat-purple">
+
+                    <div class="stat-number">
+                        02
+                    </div>
+
+                    <div class="stat-label">
+                        CURRENT YEAR
+                    </div>
+
+                </div>
+
+
+                <div class="glass stat stat-cyan">
+
+                    <div class="stat-number">
+                        13+
+                    </div>
+
+                    <div class="stat-label">
+                        COURSES
+                    </div>
+
+                </div>
+
+
+                <div class="glass stat stat-pink">
+
+                    <div class="stat-number">
+                        CSD
+                    </div>
+
+                    <div class="stat-label">
+                        FIELD
+                    </div>
+
+                </div>
+
+
+                <div class="glass stat stat-blue">
+
+                    <div class="stat-number">
+                        ∞
+                    </div>
+
+                    <div class="stat-label">
+                        LEARNING
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     COURSES
+========================================================= -->
+
+<section id="courses">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <div class="section-number">
+                02 — Academic Foundation
+            </div>
+
+            <h2 class="section-title">
+                What I've studied.
+            </h2>
+
+            <p class="section-description">
+
+                A multidisciplinary academic foundation
+                covering programming, algorithms,
+                mathematics, data engineering,
+                web technologies and communication.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- PROGRAMMING -->
+
+        <div class="course-category">
+
+
+            <div class="category-title reveal">
+
+                <div class="category-index">
                     01
-                </span>
+                </div>
 
                 <h3>
                     Programming & Algorithms
@@ -41,44 +1992,96 @@
 
             <div class="course-grid">
 
-                <div class="course-card">
-                    <span>01</span>
-                    <h4>Python</h4>
+
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        01
+                    </div>
+
+                    <div class="course-icon">
+                        🐍
+                    </div>
+
+                    <h4>
+                        Python
+                    </h4>
+
                     <p>
                         Programming fundamentals,
-                        problem solving and computational thinking.
+                        functions, problem solving
+                        and computational thinking.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>02</span>
-                    <h4>Programming in C</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        02
+                    </div>
+
+                    <div class="course-icon">
+                        C
+                    </div>
+
+                    <h4>
+                        Programming in C
+                    </h4>
+
                     <p>
-                        Core programming, functions,
-                        pointers, arrays and memory concepts.
+                        Core programming, arrays,
+                        functions, pointers and
+                        memory concepts.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>03</span>
-                    <h4>Data Structures</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        03
+                    </div>
+
+                    <div class="course-icon">
+                        DS
+                    </div>
+
+                    <h4>
+                        Data Structures
+                    </h4>
+
                     <p>
-                        Arrays, linked lists, stacks, queues,
-                        trees and sorting techniques.
+                        Arrays, linked lists, stacks,
+                        queues, trees and sorting.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>04</span>
-                    <h4>Design & Analysis of Algorithms</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        04
+                    </div>
+
+                    <div class="course-icon">
+                        DAA
+                    </div>
+
+                    <h4>
+                        Design & Analysis of Algorithms
+                    </h4>
+
                     <p>
-                        Algorithm design, complexity analysis
-                        and systematic problem solving.
+                        Algorithm design, complexity
+                        analysis and problem solving.
                     </p>
+
                 </div>
+
 
             </div>
 
@@ -86,17 +2089,16 @@
 
 
 
-        <!-- ================================================
-             WEB & DATA
-        ================================================= -->
+        <!-- WEB & DATA -->
 
-        <div class="course-category reveal">
+        <div class="course-category">
 
-            <div class="category-header">
 
-                <span class="category-number">
+            <div class="category-title reveal">
+
+                <div class="category-index">
                     02
-                </span>
+                </div>
 
                 <h3>
                     Web & Data
@@ -107,34 +2109,73 @@
 
             <div class="course-grid">
 
-                <div class="course-card">
-                    <span>05</span>
-                    <h4>Web Technology</h4>
+
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        05
+                    </div>
+
+                    <div class="course-icon">
+                        🌐
+                    </div>
+
+                    <h4>
+                        Web Technology
+                    </h4>
+
                     <p>
-                        Fundamentals of web technologies
-                        and modern web development.
+                        Web technologies and
+                        fundamentals of modern
+                        web development.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>06</span>
-                    <h4>Internet Programming</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        06
+                    </div>
+
+                    <div class="course-icon">
+                        IP
+                    </div>
+
+                    <h4>
+                        Internet Programming
+                    </h4>
+
                     <p>
-                        Understanding programming concepts
-                        used in internet-based applications.
+                        Programming concepts used
+                        for internet-based applications.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>07</span>
-                    <h4>Foundation of Data Engineering</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        07
+                    </div>
+
+                    <div class="course-icon">
+                        DE
+                    </div>
+
+                    <h4>
+                        Foundation of Data Engineering
+                    </h4>
+
                     <p>
-                        Exploring the foundations of data,
-                        pipelines and data engineering concepts.
+                        Foundations of data systems,
+                        processing and engineering.
                     </p>
+
                 </div>
+
 
             </div>
 
@@ -142,17 +2183,16 @@
 
 
 
-        <!-- ================================================
-             MATHEMATICS
-        ================================================= -->
+        <!-- MATHEMATICS -->
 
-        <div class="course-category reveal">
+        <div class="course-category">
 
-            <div class="category-header">
 
-                <span class="category-number">
+            <div class="category-title reveal">
+
+                <div class="category-index">
                     03
-                </span>
+                </div>
 
                 <h3>
                     Mathematics & Reasoning
@@ -163,34 +2203,74 @@
 
             <div class="course-grid">
 
-                <div class="course-card">
-                    <span>08</span>
-                    <h4>Discrete Mathematics</h4>
+
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        08
+                    </div>
+
+                    <div class="course-icon">
+                        ∑
+                    </div>
+
+                    <h4>
+                        Discrete Mathematics
+                    </h4>
+
                     <p>
                         Logic, propositions, sets,
-                        relations and mathematical reasoning.
+                        relations and mathematical
+                        reasoning.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>09</span>
-                    <h4>Linear Algebra</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        09
+                    </div>
+
+                    <div class="course-icon">
+                        ∑
+                    </div>
+
+                    <h4>
+                        Linear Algebra
+                    </h4>
+
                     <p>
-                        Matrices, vectors, transformations
-                        and systems of equations.
+                        Matrices, vectors, systems
+                        and mathematical foundations.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>10</span>
-                    <h4>Critical Thinking</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        10
+                    </div>
+
+                    <div class="course-icon">
+                        ?
+                    </div>
+
+                    <h4>
+                        Critical Thinking
+                    </h4>
+
                     <p>
-                        Analytical reasoning and
-                        structured problem solving.
+                        Analytical reasoning,
+                        structured thinking and
+                        problem solving.
                     </p>
+
                 </div>
+
 
             </div>
 
@@ -198,17 +2278,16 @@
 
 
 
-        <!-- ================================================
-             COMMUNICATION & SOCIETY
-        ================================================= -->
+        <!-- COMMUNICATION -->
 
-        <div class="course-category reveal">
+        <div class="course-category">
 
-            <div class="category-header">
 
-                <span class="category-number">
+            <div class="category-title reveal">
+
+                <div class="category-index">
                     04
-                </span>
+                </div>
 
                 <h3>
                     Communication & Society
@@ -219,34 +2298,446 @@
 
             <div class="course-grid">
 
-                <div class="course-card">
-                    <span>11</span>
-                    <h4>Writing & Communication</h4>
+
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        11
+                    </div>
+
+                    <div class="course-icon">
+                        ✍
+                    </div>
+
+                    <h4>
+                        Writing & Communication
+                    </h4>
+
                     <p>
-                        Written communication, presentation
-                        and professional expression.
+                        Written communication,
+                        professional expression
+                        and presentation skills.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>12</span>
-                    <h4>Indian Constitution & Democracy</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        12
+                    </div>
+
+                    <div class="course-icon">
+                        ⚖
+                    </div>
+
+                    <h4>
+                        Indian Constitution & Democracy
+                    </h4>
+
                     <p>
-                        Understanding constitutional principles,
+                        Constitutional principles,
                         democracy and civic foundations.
                     </p>
+
                 </div>
 
 
-                <div class="course-card">
-                    <span>13</span>
-                    <h4>Environment & Sustainability</h4>
+                <div class="glass course-card reveal">
+
+                    <div class="course-number">
+                        13
+                    </div>
+
+                    <div class="course-icon">
+                        🌱
+                    </div>
+
+                    <h4>
+                        Environment & Sustainability
+                    </h4>
+
                     <p>
                         Environmental challenges,
-                        sustainability and responsible development.
+                        sustainability and responsible
+                        development.
                     </p>
+
                 </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     EDUCATION
+========================================================= -->
+
+<section id="education">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <div class="section-number">
+                03 — Education
+            </div>
+
+            <h2 class="section-title">
+                My journey.
+            </h2>
+
+        </div>
+
+
+        <div class="education-wrapper">
+
+
+            <div class="education-item reveal">
+
+                <div class="education-year">
+                    2025 — PRESENT
+                </div>
+
+                <h3>
+                    Sai University
+                </h3>
+
+                <p>
+                    Second Year · Computing and Data Science
+                </p>
+
+            </div>
+
+
+            <div class="education-item reveal">
+
+                <div class="education-year">
+                    ACADEMIC FOCUS
+                </div>
+
+                <h3>
+                    Computing × Data × Mathematics
+                </h3>
+
+                <p>
+                    Programming · Data Structures · DAA ·
+                    Data Engineering · Discrete Mathematics ·
+                    Linear Algebra · Web Technology
+                </p>
+
+            </div>
+
+
+            <div class="education-item reveal">
+
+                <div class="education-year">
+                    CURRENT
+                </div>
+
+                <h3>
+                    Learning & Building
+                </h3>
+
+                <p>
+                    Developing projects, improving programming
+                    fundamentals and exploring new areas of
+                    computing and data science.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<section id="projects">
+
+    <div class="container">
+
+
+        <div class="section-header reveal">
+
+            <div class="section-number">
+                04 — Projects
+            </div>
+
+            <h2 class="section-title">
+                Things I'm building.
+            </h2>
+
+            <p class="section-description">
+
+                A collection of projects and experiments
+                that demonstrate what I'm learning.
+
+            </p>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <!-- PROJECT 1 -->
+
+            <div class="glass project reveal">
+
+                <div class="project-number">
+                    PROJECT / 01
+                </div>
+
+                <h3>
+                    Python Project
+                </h3>
+
+                <p>
+                    Add your Python project here.
+                    Describe the problem, your solution,
+                    the features and what you learned.
+                </p>
+
+                <div class="project-tech">
+
+                    <span>
+                        Python
+                    </span>
+
+                    <span>
+                        Problem Solving
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 2 -->
+
+            <div class="glass project reveal">
+
+                <div class="project-number">
+                    PROJECT / 02
+                </div>
+
+                <h3>
+                    Web Project
+                </h3>
+
+                <p>
+                    Add your web technology project here.
+                    Describe the website, technologies
+                    and interesting features.
+                </p>
+
+                <div class="project-tech">
+
+                    <span>
+                        HTML
+                    </span>
+
+                    <span>
+                        CSS
+                    </span>
+
+                    <span>
+                        JavaScript
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 3 -->
+
+            <div class="glass project reveal">
+
+                <div class="project-number">
+                    PROJECT / 03
+                </div>
+
+                <h3>
+                    Data Project
+                </h3>
+
+                <p>
+                    Add a future data engineering,
+                    data science or analytics project here.
+                </p>
+
+                <div class="project-tech">
+
+                    <span>
+                        Data
+                    </span>
+
+                    <span>
+                        Python
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- PROJECT 4 -->
+
+            <div class="glass project reveal">
+
+                <div class="project-number">
+                    PROJECT / 04
+                </div>
+
+                <h3>
+                    DSA Project
+                </h3>
+
+                <p>
+                    Add a project demonstrating data
+                    structures, algorithms and
+                    computational problem solving.
+                </p>
+
+                <div class="project-tech">
+
+                    <span>
+                        DSA
+                    </span>
+
+                    <span>
+                        C
+                    </span>
+
+                    <span>
+                        Algorithms
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+    <div class="container">
+
+
+        <div class="glass contact reveal">
+
+
+            <div class="contact-content">
+
+
+                <div class="section-number">
+                    05 — Contact
+                </div>
+
+
+                <h2>
+
+                    Let's build
+                    <br>
+
+                    <span class="gradient-text">
+                        something.
+                    </span>
+
+                </h2>
+
+
+                <p>
+
+                    Have a project, idea or opportunity?
+                    I'd be happy to connect.
+
+                </p>
+
+
+                <a
+                    href="mailto:maheshkaranki7@gmail.com"
+                    class="button button-primary">
+
+                    Send me an email →
+
+                </a>
+
+
+                <a
+                    href="mailto:maheshkaranki7@gmail.com"
+                    class="email">
+
+                    maheshkaranki7@gmail.com
+
+                </a>
+
+
+                <div class="social-links">
+
+                    <!-- Replace # with your actual links -->
+
+                    <a
+                        href="#"
+                        class="social"
+                        title="GitHub">
+
+                        GH
+
+                    </a>
+
+
+                    <a
+                        href="#"
+                        class="social"
+                        title="LinkedIn">
+
+                        IN
+
+                    </a>
+
+
+                    <a
+                        href="mailto:maheshkaranki7@gmail.com"
+                        class="social"
+                        title="Email">
+
+                        @
+
+                    </a>
+
+                </div>
+
 
             </div>
 
@@ -255,3 +2746,686 @@
     </div>
 
 </section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div>
+                © 2026 Mahesh Karanki
+            </div>
+
+            <div>
+                Computing × Data × Curiosity
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   THREE.JS
+========================================================= */
+
+const scene =
+    new THREE.Scene();
+
+
+const camera =
+    new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth /
+        window.innerHeight,
+        0.1,
+        1000
+    );
+
+
+camera.position.z = 5;
+
+
+const renderer =
+    new THREE.WebGLRenderer({
+
+        alpha: true,
+
+        antialias: true
+
+    });
+
+
+renderer.setPixelRatio(
+    Math.min(
+        window.devicePixelRatio,
+        2
+    )
+);
+
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+
+document
+    .getElementById("three-container")
+    .appendChild(
+        renderer.domElement
+    );
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleGeometry =
+    new THREE.BufferGeometry();
+
+
+const particleCount = 1000;
+
+
+const particlePositions =
+    new Float32Array(
+        particleCount * 3
+    );
+
+
+for (
+    let i = 0;
+    i < particleCount * 3;
+    i++
+) {
+
+    particlePositions[i] =
+        (Math.random() - 0.5) * 20;
+
+}
+
+
+particleGeometry.setAttribute(
+
+    "position",
+
+    new THREE.BufferAttribute(
+        particlePositions,
+        3
+    )
+
+);
+
+
+const particleMaterial =
+    new THREE.PointsMaterial({
+
+        color: 0x8b5cf6,
+
+        size: 0.025,
+
+        transparent: true,
+
+        opacity: 0.65
+
+    });
+
+
+const particles =
+    new THREE.Points(
+
+        particleGeometry,
+
+        particleMaterial
+
+    );
+
+
+scene.add(
+    particles
+);
+
+
+/* =========================================================
+   3D WIREFRAME SPHERE
+========================================================= */
+
+const sphereGeometry =
+    new THREE.IcosahedronGeometry(
+        1.7,
+        2
+    );
+
+
+const sphereMaterial =
+    new THREE.MeshBasicMaterial({
+
+        color: 0x8b5cf6,
+
+        wireframe: true,
+
+        transparent: true,
+
+        opacity: 0.12
+
+    });
+
+
+const sphere =
+    new THREE.Mesh(
+
+        sphereGeometry,
+
+        sphereMaterial
+
+    );
+
+
+sphere.position.set(
+    3,
+    0,
+    0
+);
+
+
+scene.add(
+    sphere
+);
+
+
+/* =========================================================
+   SECOND 3D RING
+========================================================= */
+
+const ringGeometry =
+    new THREE.TorusGeometry(
+        2.2,
+        0.015,
+        16,
+        100
+    );
+
+
+const ringMaterial =
+    new THREE.MeshBasicMaterial({
+
+        color: 0x06b6d4,
+
+        transparent: true,
+
+        opacity: 0.35
+
+    });
+
+
+const ring =
+    new THREE.Mesh(
+
+        ringGeometry,
+
+        ringMaterial
+
+    );
+
+
+ring.position.set(
+    3,
+    0,
+    0
+);
+
+
+ring.rotation.x =
+    Math.PI / 2;
+
+
+scene.add(
+    ring
+);
+
+
+/* =========================================================
+   SMALL FLOATING OBJECTS
+========================================================= */
+
+const floatingObjects = [];
+
+
+for (
+    let i = 0;
+    i < 18;
+    i++
+) {
+
+    const geometry =
+        new THREE.TetrahedronGeometry(
+            Math.random() * 0.08 + 0.025
+        );
+
+
+    const colors = [
+
+        0x8b5cf6,
+        0xec4899,
+        0x06b6d4,
+        0x3b82f6
+
+    ];
+
+
+    const material =
+        new THREE.MeshBasicMaterial({
+
+            color:
+                colors[
+                    Math.floor(
+                        Math.random() *
+                        colors.length
+                    )
+                ],
+
+            wireframe: true,
+
+            transparent: true,
+
+            opacity: 0.5
+
+        });
+
+
+    const object =
+        new THREE.Mesh(
+
+            geometry,
+
+            material
+
+        );
+
+
+    object.position.set(
+
+        (Math.random() - 0.5) * 14,
+
+        (Math.random() - 0.5) * 9,
+
+        (Math.random() - 0.5) * 6
+
+    );
+
+
+    scene.add(
+        object
+    );
+
+
+    floatingObjects.push(
+        object
+    );
+
+}
+
+
+/* =========================================================
+   MOUSE
+========================================================= */
+
+let mouseX = 0;
+
+let mouseY = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        mouseX =
+            (
+                event.clientX /
+                window.innerWidth
+            ) - 0.5;
+
+
+        mouseY =
+            (
+                event.clientY /
+                window.innerHeight
+            ) - 0.5;
+
+    }
+);
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+const clock =
+    new THREE.Clock();
+
+
+function animate() {
+
+    requestAnimationFrame(
+        animate
+    );
+
+
+    const time =
+        clock.getElapsedTime();
+
+
+    particles.rotation.y =
+        time * 0.012;
+
+
+    particles.rotation.x =
+        time * 0.004;
+
+
+    sphere.rotation.x =
+        time * 0.18;
+
+
+    sphere.rotation.y =
+        time * 0.25;
+
+
+    ring.rotation.z =
+        time * 0.18;
+
+
+    ring.rotation.y =
+        time * 0.08;
+
+
+    sphere.position.x =
+        3 +
+        mouseX * 0.4;
+
+
+    sphere.position.y =
+        Math.sin(
+            time * 0.7
+        ) * 0.12;
+
+
+    floatingObjects.forEach(
+        (object,index) => {
+
+            object.rotation.x +=
+                0.002;
+
+            object.rotation.y +=
+                0.003;
+
+            object.position.y +=
+                Math.sin(
+                    time + index
+                ) * 0.0003;
+
+        }
+    );
+
+
+    camera.position.x +=
+        (
+            mouseX * 0.2 -
+            camera.position.x
+        ) * 0.02;
+
+
+    camera.position.y +=
+        (
+            -mouseY * 0.2 -
+            camera.position.y
+        ) * 0.02;
+
+
+    camera.lookAt(
+        scene.position
+    );
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+
+animate();
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        camera.aspect =
+            window.innerWidth /
+            window.innerHeight;
+
+
+        camera.updateProjectionMatrix();
+
+
+        renderer.setSize(
+            window.innerWidth,
+            window.innerHeight
+        );
+
+    }
+);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".reveal"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target
+                            .classList
+                            .add("active");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach(
+    element => {
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+
+/* =========================================================
+   COURSE CARD 3D TILT
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".course-card"
+    )
+    .forEach(card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                const rotateY =
+                    (
+                        x /
+                        rect.width -
+                        0.5
+                    ) * 8;
+
+
+                const rotateX =
+                    (
+                        y /
+                        rect.height -
+                        0.5
+                    ) * -8;
+
+
+                card.style.transform =
+                    `
+                    perspective(700px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-8px)
+                    `;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform =
+                    "";
+
+            }
+        );
+
+    });
+
+
+/* =========================================================
+   PROJECT CARD 3D TILT
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".project"
+    )
+    .forEach(card => {
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                const rotateY =
+                    (
+                        x /
+                        rect.width -
+                        0.5
+                    ) * 6;
+
+
+                const rotateX =
+                    (
+                        y /
+                        rect.height -
+                        0.5
+                    ) * -6;
+
+
+                card.style.transform =
+                    `
+                    perspective(800px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-10px)
+                    `;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform =
+                    "";
+
+            }
+        );
+
+    });
+
+</script>
+
+</body>
+
+</html>
