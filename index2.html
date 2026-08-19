@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sai University - Mess Fees Payment</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #eef2ff, #f8fafc);
+            color: #1e293b;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 950px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .payment-card {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.10);
+        }
+
+        .student-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .student-section h2 {
+            font-size: 19px;
+            margin-bottom: 15px;
+            color: #4f46e5;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .detail-box {
+            background: white;
+            padding: 13px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .detail-box span {
+            display: block;
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        .detail-box strong {
+            font-size: 15px;
+        }
+
+        .amount-box {
+            text-align: center;
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            padding: 25px;
+            border-radius: 17px;
+            margin: 25px 0;
+        }
+
+        .amount-box p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .amount {
+            color: #5b21b6;
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .payment-title {
+            text-align: center;
+            margin: 30px 0 20px;
+        }
+
+        .payment-title h2 {
+            font-size: 22px;
+        }
+
+        .payment-title p {
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .option {
+            border: 2px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px;
+            text-align: center;
+            transition: 0.3s;
+            background: white;
+        }
+
+        .option:hover {
+            border-color: #7c3aed;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(124,58,237,0.12);
+        }
+
+        .option-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .option h3 {
+            margin-bottom: 8px;
+        }
+
+        .option p {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .phonepe-btn {
+            background: #673ab7;
+            color: white;
+        }
+
+        .phonepe-btn:hover {
+            background: #512da8;
+        }
+
+        .card-btn {
+            background: #2563eb;
+            color: white;
+        }
+
+        .card-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .qr-section {
+            display: none;
+            text-align: center;
+            margin-top: 25px;
+            padding: 25px;
+            background: #faf5ff;
+            border-radius: 18px;
+        }
+
+        .qr-section h3 {
+            margin-bottom: 10px;
+            color: #5b21b6;
+        }
+
+        .qr-image {
+            width: 280px;
+            max-width: 90%;
+            margin: 15px auto;
+            display: block;
+            border-radius: 12px;
+            background: black;
+        }
+
+        .scan-text {
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .bank-section {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+        }
+
+        .bank-section h2 {
+            color: #334155;
+            margin-bottom: 18px;
+        }
+
+        .bank-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 11px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .bank-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-row span:first-child {
+            color: #64748b;
+        }
+
+        .bank-row strong {
+            text-align: right;
+        }
+
+        .notice {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            color: #9a3412;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .status {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            color: #047857;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @media(max-width: 650px) {
+
+            .header h1 {
+                font-size: 23px;
+            }
+
+            .payment-card {
+                padding: 20px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                grid-template-columns: 1fr;
+            }
+
+            .amount {
+                font-size: 34px;
+            }
+
+            .bank-row {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .bank-row strong {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>Sai University</h1>
+        <p>Mess Fee Payment Portal</p>
+    </header>
+
+
+    <main class="container">
+
+        <div class="payment-card">
+
+            <!-- STUDENT DETAILS -->
+            <section class="student-section">
+
+                <h2>Student Payment Details</h2>
+
+                <div class="details">
+
+                    <div class="detail-box">
+                        <span>Fee Type</span>
+                        <strong>Mess Fees</strong>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Academic Year</span>
+                        <strong>2026 - 2027</strong>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Payment Status</span>
+                        <strong>Pending</strong>
+                    </div>
+
+                    <div class="detail-box">
+                        <span>Payment Mode</span>
+                        <strong>Online</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- AMOUNT -->
+            <section class="amount-box">
+
+                <p>Total Mess Fee Payable</p>
+
+                <div class="amount">
+                    ₹10,000
+                </div>
+
+            </section>
+
+
+            <!-- PAYMENT OPTIONS -->
+            <section>
+
+                <div class="payment-title">
+
+                    <h2>Select Payment Method</h2>
+
+                    <p>Choose your preferred payment method</p>
+
+                </div>
+
+
+                <div class="payment-options">
+
+
+                    <!-- PHONEPE -->
+                    <div class="option">
+
+                        <div class="option-icon">
+                            📱
+                        </div>
+
+                        <h3>PhonePe / UPI</h3>
+
+                        <p>
+                            Scan the PhonePe QR code using
+                            any UPI application.
+                        </p>
+
+                        <button
+                            class="btn phonepe-btn"
+                            onclick="showQR()">
+
+                            Pay ₹10,000 using UPI
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- CARD -->
+                    <div class="option">
+
+                        <div class="option-icon">
+                            💳
+                        </div>
+
+                        <h3>Debit / Credit Card</h3>
+
+                        <p>
+                            Pay securely using your debit
+                            or credit card.
+                        </p>
+
+                        <button
+                            class="btn card-btn"
+                            onclick="cardPayment()">
+
+                            Pay ₹10,000 by Card
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- QR CODE -->
+            <section
+                class="qr-section"
+                id="qrSection">
+
+                <h3>Scan & Pay Using PhonePe</h3>
+
+                <p class="scan-text">
+                    Open PhonePe or another UPI app
+                    and scan the QR code below.
+                </p>
+
+                <img
+                    src="phonepe-qr.jpg"
+                    alt="PhonePe Payment QR Code"
+                    class="qr-image">
+
+                <p class="scan-text">
+                    Amount: <strong>₹10,000</strong>
+                </p>
+
+            </section>
+
+
+            <!-- BANK DETAILS -->
+            <section class="bank-section">
+
+                <h2>Bank Transfer Details</h2>
+
+                <div class="bank-row">
+                    <span>Bank</span>
+                    <strong>Canara Bank</strong>
+                </div>
+
+                <div class="bank-row">
+                    <span>Account Number</span>
+                    <strong>110324800033</strong>
+                </div>
+
+                <div class="bank-row">
+                    <span>Account Holder</span>
+                    <strong>KODURU GURU VIGNESH</strong>
+                </div>
+
+                <div class="bank-row">
+                    <span>Mobile Number</span>
+                    <strong>+91 94935 72923</strong>
+                </div>
+
+                <div class="bank-row">
+                    <span>IFSC Code</span>
+                    <strong>CNRB0008483</strong>
+                </div>
+
+                <div class="bank-row">
+                    <span>MMID</span>
+                    <strong>Not Generated</strong>
+                </div>
+
+                <div class="bank-row">
+                    <span>Branch</span>
+                    <strong>
+                        SY.NO.96/40, NO.52, KOVALAM ROAD,
+                        OPP. TO RADISON BLU RESORT
+                    </strong>
+                </div>
+
+            </section>
+
+
+            <!-- NOTICE -->
+            <div class="notice">
+
+                <strong>Payment Notice:</strong><br>
+
+                Please verify the beneficiary details
+                before making any bank transfer.
+                Keep your transaction/UTR number after
+                successful payment.
+
+            </div>
+
+
+            <!-- STATUS -->
+            <div
+                id="status"
+                class="status">
+
+                Payment option selected.
+                Complete the payment through the
+                selected payment method.
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+
+        © 2026 Sai University · Mess Fee Payment
+
+    </footer>
+
+
+    <script>
+
+        function showQR() {
+
+            const qr = document.getElementById("qrSection");
+
+            const status = document.getElementById("status");
+
+            qr.style.display = "block";
+
+            status.style.display = "block";
+
+            qr.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+
+        function cardPayment() {
+
+            alert(
+                "Debit/Credit Card payment requires a secure payment gateway. " +
+                "Connect this button to your Razorpay/Cashfree/other merchant gateway."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>
